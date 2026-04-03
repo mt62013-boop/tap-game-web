@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  user-select: none;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px #e94560;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #a0aec0;
+  margin-bottom: 1.5rem;
+}
+
+.stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 0.6rem 1.4rem;
+  text-align: center;
+  min-width: 90px;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #a0aec0;
+  margin-bottom: 2px;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #e94560;
+}
+
+#timer.urgent {
+  color: #ff4757;
+  animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+#game-area {
+  position: relative;
+  width: 360px;
+  height: 480px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: crosshair;
+  box-shadow: 0 0 40px rgba(233, 69, 96, 0.2);
+}
+
+#game-area.inactive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+#overlay {
+  text-align: center;
+  padding: 2rem;
+}
+
+#overlay h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #e94560;
+}
+
+#overlay p {
+  color: #a0aec0;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+#overlay .best-score {
+  font-size: 1rem;
+  color: #f6e05e;
+  margin-bottom: 1.5rem;
+}
+
+#start-btn {
+  background: linear-gradient(135deg, #e94560, #c0392b);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 0.8rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: transform 0.1s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(233, 69, 96, 0.5);
+}
+
+#start-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 28px rgba(233, 69, 96, 0.7);
+}
+
+#start-btn:active {
+  transform: scale(0.97);
+}
+
+.target {
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: transform 0.05s;
+  animation: pop-in 0.15s ease-out;
+}
+
+.target:active {
+  transform: scale(0.85);
+}
+
+@keyframes pop-in {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pop-out {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0); opacity: 0; }
+}
+
+.target.dying {
+  animation: pop-out 0.15s ease-in forwards;
+}
+
+.score-popup {
+  position: absolute;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #f6e05e;
+  pointer-events: none;
+  animation: float-up 0.7s ease-out forwards;
+  z-index: 10;
+  text-shadow: 0 0 8px #f6e05e;
+}
+
+@keyframes float-up {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-50px); opacity: 0; }
+}
+
+#miss-flash {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 0, 0, 0.15);
+  pointer-events: none;
+  opacity: 0;
+  border-radius: 18px;
+  transition: opacity 0.15s;
+}
+
+#miss-flash.active {
+  opacity: 1;
+}
+
+.progress-bar-wrap {
+  width: 360px;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  margin-top: 0.8rem;
+  overflow: hidden;
+}
+
+#progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #e94560, #f6e05e);
+  border-radius: 3px;
+  transition: width 1s linear;
+  width: 100%;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>لعبة الضغط السريع</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>🎯 لعبة الضغط</h1>
+  <p class="subtitle">اضغط على الأهداف قبل أن تختفي!</p>
+
+  <div class="stats">
+    <div class="stat-box">
+      <div class="stat-label">النقاط</div>
+      <div class="stat-value" id="score">0</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">الوقت</div>
+      <div class="stat-value" id="timer">30</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">أخطاء</div>
+      <div class="stat-value" id="misses">0</div>
+    </div>
+  </div>
+
+  <div id="game-area" class="inactive">
+    <div id="miss-flash"></div>
+    <div id="overlay">
+      <h2 id="overlay-title">🎯 لعبة الضغط السريع</h2>
+      <p id="overlay-msg">
+        اضغط على الأهداف الملونة لتجمع نقاطاً!<br/>
+        لديك <strong>30 ثانية</strong> و<strong>5 أخطاء</strong> كحد أقصى.
+      </p>
+      <p class="best-score" id="best-score-display">🏆 أفضل نتيجة: 0</p>
+      <button id="start-btn">▶ ابدأ اللعبة</button>
+    </div>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div id="progress-bar"></div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
